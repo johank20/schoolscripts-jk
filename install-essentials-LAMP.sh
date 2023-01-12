@@ -12,6 +12,7 @@ echo "Do you want to update your system before installation? (Y/N)"
 read update
 if [ "$update" = "Y" ]; then
     apt update && apt -y full-upgrade
+    fi
     echo "Reboot machine? (Y/N)"
     read autoreboot
     if [ "$autoreboot" = "Y" ]; then
@@ -35,18 +36,23 @@ fi
     sudo apt-get install -y apache2
     
     # Ask for MySQL version
-    echo "Which version of MySQL do you want to install? (e.g. 'mysql-server-5.7' or mariadb-server)"
-    read mysql_version
+    echo "Which version of MySQL do you want to install? (e.g. 'mysql' or 'mariadb')"
+    read mysql
     
-    # Install MySQL
-    sudo apt-get install -y "$mysql_version"
+    if [ "$mysql" = "Mariadb" ]; then
     
+        #if mariadb Install mariadb
+        sudo apt-get install -y mariadb
+    else
+        #if mysql install mariadb
+        sudo apt install -y mysql
+    fi
     # Ask for PHP version
     echo "Which version of PHP do you want to install? (e.g. 'php7.4')"
     read php_version
     
     # Install PHP
-    sudo apt-get install -y "$php_version" libapache2-mod-"$php_version" "$php_version"-mysql
+    sudo apt-get install -y "$php_version" libapache2-mod-"$php_version" "$php_version"-{fpm,bcmath,bz2,intl,gd,mbstring,mysql,zip,xml}
     
     # Restart Apache to apply changes
     sudo service apache2 restart

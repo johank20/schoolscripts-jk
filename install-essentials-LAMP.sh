@@ -5,9 +5,7 @@ echo "Which Operating System are you using? (Ubuntu, Debian, Centos)"
 read os
 
 if [ "$os" = "Ubuntu" ] || [ "$os" = "Debian" ]; then
-    #Ask if full-upgrade Requried
-    echo "Is this system updatede? (Y/N)"
-    read update
+
 
 # Ask if update system 
 echo "Do you want to update your system before installation? (Y/N)"

@@ -42,10 +42,11 @@ fi
     if [ "$mysql" = "Mariadb" ]; then
     
         #if mariadb Install mariadb
-        sudo apt-get install -y mariadb
+        sudo apt-get install -y mariadb-client mariadb-server
     else
-        #if mysql install mariadb
-        sudo apt install -y mysql
+        #if mysql install mysql
+        sudo apt-get install libaio1
+        sudo apt install -y mysql-server mysql-client
     fi
     # Ask for PHP version
     echo "Which version of PHP do you want to install? (e.g. 'php7.4')"
@@ -56,6 +57,9 @@ fi
     
     # Restart Apache to apply changes
     sudo service apache2 restart
+    
+    #start mysql install
+    sudo mysql-secure-installation
     
 elif [ "$os" = "Centos" ]; then
     # Update package manager

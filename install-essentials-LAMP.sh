@@ -9,15 +9,21 @@ if [ "$os" = "Ubuntu" ] || [ "$os" = "Debian" ]; then
     echo "Is this system updatede? (Y/N)"
     read update
 
-if ["$update" = "Y" ]; then
-    sudo apt update && sudo apt -y full-upgrade
-    #check if reboot nessary
+# Ask if update system 
+echo "Do you want to update your system before installation? (Y/N)"
+read update
+if [ "$update" = "Y" ]; then
+    apt update && apt -y full-upgrade
     echo "Reboot machine? (Y/N)"
     read autoreboot
-      if [ "$autoreboot" = "Y" ] then
-        sudo reboot 
-      else [ "$autoreboot" = "N" ] then
-else [ "$update" = "N" ]
+    if [ "$autoreboot" = "Y" ]; then
+        reboot 
+    else
+        echo "Continuing with installation without reboot"
+    fi
+else
+    echo "Continuing with installation without update"
+fi
 
 
     

@@ -31,7 +31,7 @@ elif [ "$update" = "N" ]
     sudo apt-get install -y apache2
     
     # Ask for MySQL version
-    echo "Which version of MySQL do you want to install? (e.g. 'mysql-server-5.7')"
+    echo "Which version of MySQL do you want to install? (e.g. 'mysql-server-5.7' or mariadb-server)"
     read mysql_version
     
     # Install MySQL

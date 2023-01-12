@@ -16,8 +16,8 @@ if ["$update" = "Y" ]; then
     read autoreboot
       if [ "$autoreboot" = "Y" ] then
         sudo reboot 
-      elif [ "$autoreboot" = "N" ] then
-elif [ "$update" = "N" ]
+      else [ "$autoreboot" = "N" ] then
+else [ "$update" = "N" ]
 
 
     
